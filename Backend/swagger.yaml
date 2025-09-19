@@ -79,7 +79,7 @@ paths:
                       format: int64
                       example: 1
                     title:
-                      type: string
+                      type: string 
                       example: "Abajour Tahina"
                     imageUrl:
                       type: string

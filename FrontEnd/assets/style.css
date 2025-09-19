@@ -58,6 +58,23 @@ header {
 	justify-content: space-between;
 	margin: 50px 0
 }
+
+header nav ul {
+    display: flex;
+    align-items: center; /* Aligne verticalement les éléments */
+    gap: 20px; /* Espace entre les éléments */
+}
+header nav ul li {
+    display: flex;
+    align-items: center;
+}
+
+header nav ul li img {
+    width: 20px; 
+    height: 20px;
+    vertical-align: middle; /* Aligne verticalement avec le texte */
+}
+
 section {
 	margin: 50px 0
 }
@@ -84,6 +101,37 @@ h2{
 	font-size: 30px;
 	color: #1D6154
 }
+
+/* Style de la navigation */
+header nav ul {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+}
+
+header nav ul li {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 16px;
+}
+
+/* Liens sans soulignement */
+header nav ul li a {
+    color: black; /* Couleur noire par défaut */
+    text-decoration: none; /* Pas de soulignement */
+    transition: color 0.3s ease;
+}
+
+/* Couleur au survol */
+header nav ul li a:hover {
+    color: #B1663C; /* Violet/marron au survol */
+}
+
+/* Style spécifique pour la page active */
+header nav ul li a.active {
+    color: #B1663C; /* Violet/marron pour la page active */
+    font-weight: 500;
+}
+
 nav ul {
 	display: flex;
 	align-items: center;
@@ -184,5 +232,112 @@ footer nav ul {
 	display: flex;
 	justify-content: flex-end;
 	margin: 2em
+}
+
+.filters {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 40px 0;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    padding: 9px 15px;
+    border: 1px solid #1D6154;
+    background: white;
+    color: #1D6154;
+    border-radius: 25px;
+    cursor: pointer;
+	font-size: 16px;
+    font-family: 'Syne', sans-serif;
+    transition: all 0.3s ease;
+	min-width: 100px;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background: #1D6154;
+    color: white;
+}
+
+
+/* Style pour la section login */
+#login-section {
+    max-width: 400px;
+    margin: 100px auto;
+    padding: 40px;
+    text-align: center;
+}
+
+/* Style pour le lien mot de passe oublié */
+#login-section a {
+    color: #3D3D3D;
+    text-decoration: underline; 
+    font-family: 'Work Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 600; 
+}
+
+#login-section h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: 30px;
+    font-weight: 700;
+    color: #1D6154;
+    margin-bottom: 30px;
+}
+
+#login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+#login-form label {
+    text-align: left;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 500;
+}
+
+#login-form input {
+    padding: 15px;
+    border: none;
+    border-radius: 8px;
+    background: #FFF;
+    box-shadow: 0px 4px 14px 0px rgba(0, 0, 0, 0.09);
+    font-family: 'Work Sans', sans-serif;
+    font-size: 14px;
+}
+
+/* Style pour le bouton se connecter */
+#login-form button {
+    padding: 15px 30px; /* Moins large */
+    border: none;
+    border-radius: 60px; /* Corner radius très arrondi */
+    background: #1D6154;
+    color: white;
+    font-family: 'Syne', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 10px;
+    width: auto; /* Largeur adaptative au texte */
+    display: inline-block; /* Pour que le width auto fonctionne */
+}
+
+#login-form button:hover {
+    background: #2a8c62;
+}
+
+#login-section a {
+    color: #3D3D3D;
+    text-decoration: none;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 14px;
+}
+
+#login-section a:hover {
+    text-decoration: underline;
 }
 
