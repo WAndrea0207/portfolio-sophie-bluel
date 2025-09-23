@@ -1,14 +1,27 @@
 // URL de l'API de connexion
 const LOGIN_URL = 'http://localhost:5678/api/users/login';
 
-// Gestionnaire de soumission du formulaire
-document.getElementById('login-form').addEventListener('submit', async function(event) {
-    event.preventDefault(); // Empêche le rechargement de la page
+// Fonction pour afficher les messages d'erreur
+function showError(message) {
+    // Supprimer les anciens messages d'erreur
+    const existingError = document.querySelector('.error-message');
+    if (existingError) {
+        existingError.remove();
+    }
     
-    // Récupération des valeurs du formulaire
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
+    // Créer et afficher le nouveau message
+    const errorElement = document.createElement('p');
+    errorElement.className = 'error-message';
+    errorElement.textContent = message;
     
+    
+    // Insérer après le formulaire
+    const form = document.getElementById('login-form');
+    form.appendChild(errorElement);
+}
+
+// Fonction pour gérer la connexion
+async function handleLogin(email, password) {
     try {
         // Appel à l'API de connexion
         const response = await fetch(LOGIN_URL, {
@@ -34,34 +47,31 @@ document.getElementById('login-form').addEventListener('submit', async function(
             
         } else {
             // Erreur d'authentification
-            showError('Erreur dans l’identifiant ou le mot de passe');
-    
-        } 
+            showError('Erreur dans l\'identifiant ou le mot de passe');
         }
-        
-     catch (error) {
+    } catch (error) {
         console.error('Erreur:', error);
         showError('Erreur réseau. Vérifiez votre connexion.');
     }
-});
+}
 
-// Fonction pour afficher les messages d'erreur
-function showError(message) {
-    // Supprimer les anciens messages d'erreur
-    const existingError = document.querySelector('.error-message');
-    if (existingError) {
-        existingError.remove();
+// Fonction pour initialiser le gestionnaire d'événements
+function initLoginForm() {
+    const loginForm = document.getElementById('login-form');
+    
+    if (loginForm) {
+        loginForm.addEventListener('submit', async function(event) {
+            event.preventDefault(); // Empêche le rechargement de la page
+            
+            // Récupération des valeurs du formulaire
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            // Appel de la fonction de connexion
+            await handleLogin(email, password);
+        });
     }
-    
-    // Créer et afficher le nouveau message
-    const errorElement = document.createElement('p');
-    errorElement.className = 'error-message';
-    errorElement.textContent = message;
-    errorElement.style.color = 'red';
-    errorElement.style.marginTop = '10px';
-    errorElement.style.textAlign = 'center';
-    
-    // Insérer après le formulaire
-    const form = document.getElementById('login-form');
-    form.appendChild(errorElement);
-};
+}
+
+// Initialisation quand le DOM est chargé
+document.addEventListener('DOMContentLoaded', initLoginForm);

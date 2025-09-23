@@ -349,14 +349,12 @@ footer nav ul {
 #login-section a:hover {
     text-decoration: underline;
 }
-
-/* Styles pour les messages d'erreur */
 .error-message {
-    color: #ff0000 !important;
+    color: red;
+    margin-top: 10px;
+    text-align: center;
     font-size: 14px;
     font-weight: 500;
-    text-align: center;
-    margin: 15px 0 0 0;
     padding: 10px;
     background-color: #ffe6e6;
     border: 1px solid #ff0000;
@@ -364,8 +362,3 @@ footer nav ul {
     font-family: 'Work Sans', sans-serif;
 }
 
-/* Style des champs en erreur */
-input.error {
-    border: 1px solid #ff0000 !important;
-    background-color: #ffe6e6;
-}
