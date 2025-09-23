@@ -183,7 +183,14 @@ li:hover {
 
 .gallery img {
 	width: 100%;
+}
 
+.gallery figcaption {
+    font-size: 13px;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 400; 
+    color: #000000; 
+    margin-top: 5px; 
 }
 #contact {
 	width: 50%;
@@ -321,9 +328,9 @@ footer nav ul {
     font-size: 16px;
     font-weight: 700;
     cursor: pointer;
-    margin-top: 10px;
-    width: auto; /* Largeur adaptative au texte */
-    display: inline-block; /* Pour que le width auto fonctionne */
+    width: 200px; /* Largeur fixe de 200px */
+    margin: 10px auto 0 auto; /* Centrage horizontal */
+    display: block; /* Nécessaire pour que margin auto fonctionne */
 }
 
 #login-form button:hover {
@@ -332,12 +339,33 @@ footer nav ul {
 
 #login-section a {
     color: #3D3D3D;
-    text-decoration: none;
+    text-decoration: underline;
+	text-underline-offset: 2px;
     font-family: 'Work Sans', sans-serif;
     font-size: 14px;
+	font-weight: 600;
 }
 
 #login-section a:hover {
     text-decoration: underline;
 }
 
+/* Styles pour les messages d'erreur */
+.error-message {
+    color: #ff0000 !important;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+    margin: 15px 0 0 0;
+    padding: 10px;
+    background-color: #ffe6e6;
+    border: 1px solid #ff0000;
+    border-radius: 5px;
+    font-family: 'Work Sans', sans-serif;
+}
+
+/* Style des champs en erreur */
+input.error {
+    border: 1px solid #ff0000 !important;
+    background-color: #ffe6e6;
+}
