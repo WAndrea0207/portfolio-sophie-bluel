@@ -8,6 +8,136 @@ const galleryView = document.getElementById('gallery-view');
 const addPhotoView = document.getElementById('add-photo-view');
 const btnAddPhoto = document.getElementById('btn-add-photo');
 const backButton = document.querySelector('.back-button');
+const photoInput = document.getElementById('photo-input');
+const photoPreview = document.getElementById('photo-preview');
+const uploadZone = document.querySelector('.upload-zone');
+const titleInput = document.getElementById('title-input');
+const categorySelect = document.getElementById('category-input');
+const submitButton = document.querySelector('.submit-button');
+const addPhotoForm = document.getElementById('add-photo-form');
+
+async function loadCategories() {
+    try {
+        const response = await fetch('http://localhost:5678/api/categories');
+        const categories = await response.json();
+        
+        categorySelect.innerHTML = '<option value=""></option>';
+        categories.forEach(category => {
+            const option = document.createElement('option');
+            option.value = category.id;
+            option.textContent = category.name;
+            categorySelect.appendChild(option);
+        });
+    } catch (error) {
+        console.error('Erreur catégories:', error);
+    }
+}
+
+// Prévisualisation de l'image
+if (photoInput) {
+    photoInput.addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        
+        if (file) {
+            // Vérifier la taille (4Mo max)
+            if (file.size > 4 * 1024 * 1024) {
+                alert('Le fichier est trop volumineux (4Mo maximum)');
+                photoInput.value = '';
+                return;
+            }
+            
+            // Afficher la prévisualisation
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                photoPreview.src = e.target.result;
+                photoPreview.style.display = 'block';
+                uploadZone.style.background = 'transparent';
+                
+                // Cacher les éléments d'upload
+                uploadZone.querySelector('.upload-icon').style.display = 'none';
+                uploadZone.querySelector('.upload-label').style.display = 'none';
+                uploadZone.querySelector('.upload-info').style.display = 'none';
+            };
+            reader.readAsDataURL(file);
+            validateForm();
+        }
+    });
+}
+
+function validateForm() {
+    const hasFile = photoInput && photoInput.files.length > 0;
+    const hasTitle = titleInput && titleInput.value.trim() !== '';
+    const hasCategory = categorySelect && categorySelect.value !== '';
+    
+    if (submitButton) {
+        submitButton.disabled = !(hasFile && hasTitle && hasCategory);
+    }
+}
+
+// Écouteurs pour la validation
+if (titleInput) titleInput.addEventListener('input', validateForm);
+if (categorySelect) categorySelect.addEventListener('change', validateForm);
+
+// Soumettre le formulaire
+if (addPhotoForm) {
+    addPhotoForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const token = localStorage.getItem('authToken');
+        if (!token) {
+            alert('Vous devez être connecté');
+            return;
+        }
+        
+        const formData = new FormData();
+        formData.append('image', photoInput.files[0]);
+        formData.append('title', titleInput.value);
+        formData.append('category', categorySelect.value);
+        
+        try {
+            const response = await fetch('http://localhost:5678/api/works', {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                },
+                body: formData
+            });
+            
+            if (response.ok) {
+                // Recharger les galeries
+                loadModalGallery();
+                reloadMainGallery();
+                
+                // Réinitialiser le formulaire
+                resetForm();
+                
+                // Retourner à la vue galerie
+                showGalleryView();
+            } else {
+                alert('Erreur lors de l\'ajout du travail');
+            }
+        } catch (error) {
+            console.error('Erreur:', error);
+            alert('Erreur lors de l\'ajout du travail');
+        }
+    });
+}
+
+function resetForm() {
+    if (addPhotoForm) addPhotoForm.reset();
+    if (photoPreview) {
+        photoPreview.style.display = 'none';
+        photoPreview.src = '';
+    }
+    if (uploadZone) {
+        uploadZone.style.background = '#E8F1F6';
+        uploadZone.querySelector('.upload-icon').style.display = 'block';
+        uploadZone.querySelector('.upload-label').style.display = 'block';
+        uploadZone.querySelector('.upload-info').style.display = 'block';
+    }
+    if (submitButton) submitButton.disabled = true;
+}
+
 
 // Ouvrir la modale
 function openModal() {
@@ -32,6 +162,8 @@ function showGalleryView() {
 function showAddPhotoView() {
     galleryView.style.display = 'none';
     addPhotoView.style.display = 'block';
+    loadCategories(); // Charger les catégories
+    resetForm(); // Réinitialiser le formulaire
 }
 
 // Charger les travaux dans la modale
@@ -123,6 +255,7 @@ if (modalOverlay) modalOverlay.addEventListener('click', closeModal);
 if (btnAddPhoto) btnAddPhoto.addEventListener('click', showAddPhotoView);
 if (backButton) backButton.addEventListener('click', showGalleryView);
 
+
 // Afficher le bouton si connecté
 document.addEventListener('DOMContentLoaded', () => {
     const token = localStorage.getItem('authToken');
@@ -130,3 +263,4 @@ document.addEventListener('DOMContentLoaded', () => {
         editBtn.style.display = 'inline';
     }
 });
+
