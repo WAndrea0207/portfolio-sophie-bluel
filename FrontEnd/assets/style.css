@@ -169,10 +169,7 @@ li:hover {
 #introduction p {
 	margin-bottom: 0.5em;
 }
-#portfolio h2 {
-	text-align: center;
-	margin-bottom: 1em;
-}
+
 .gallery {
 	width: 100%;
 	display: grid;
@@ -362,3 +359,247 @@ footer nav ul {
     font-family: 'Work Sans', sans-serif;
 }
 
+/* Header du portfolio avec bouton modifier */
+.portfolio-header {
+    text-align: center;
+    margin-bottom: 1em;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+
+}
+
+.portfolio-header h2 {
+    display: inline-block;
+    margin: 0;
+    margin-left: 120px;
+    
+}
+
+
+.edit-button {
+    background: none;
+    border: none;
+    font-family: 'Work Sans';
+    font-size: 14px;
+    color: #000;
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: middle;
+   
+}
+
+.edit-button i {
+    margin-right: 8px;
+}
+
+/* Modale */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+}
+
+/* Overlay sombre */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+/* Contenu de la modale */
+.modal-content {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    border-radius: 10px;
+    padding: 60px 105px;
+    max-width: 630px;
+    width: 90%;
+    z-index: 1001;
+}
+
+/* Bouton fermer (croix) */
+.close-modal {
+    position: absolute;
+    top: 26px;
+    right: 30px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* Titre de la modale */
+.modal-content h3 {
+    font-family: 'Work Sans';
+    font-size: 26px;
+    font-weight: 400;
+    text-align: center;
+    margin-bottom: 46px;
+}
+
+/* Galerie dans la modale */
+.modal-gallery {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+    margin-bottom: 47px;
+}
+
+.modal-gallery figure {
+    position: relative;
+    margin: 0;
+}
+
+.modal-gallery img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Icône poubelle */
+.delete-icon {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    background: #000;
+    color: white;
+    border: none;
+    width: 17px;
+    height: 17px;
+    font-size: 9px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Ligne de séparation */
+.modal-content hr {
+    border: none;
+    border-top: 1px solid #B3B3B3;
+    margin-bottom: 38px;
+}
+
+/* Bouton "Ajouter une photo" */
+#btn-add-photo {
+    width: 237px;
+    height: 36px;
+    background: #1D6154;
+    color: white;
+    border: none;
+    border-radius: 60px;
+    font-family: 'Syne';
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto;
+}
+
+#btn-add-photo:hover {
+    background: #0E2F28;
+}
+
+#add-photo-view {
+    display: none;
+}
+
+/* Bouton retour */
+.back-button {
+    position: absolute;
+    top: 26px;
+    left: 30px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* Zone d'upload */
+.upload-zone {
+    background: #E8F1F6;
+    border-radius: 3px;
+    padding: 30px;
+    text-align: center;
+    margin-bottom: 21px;
+}
+
+.upload-icon {
+    font-size: 76px;
+    color: #B9C5CC;
+    margin-bottom: 20px;
+}
+
+.upload-label {
+    background: #CBD6DC;
+    color: #306685;
+    border-radius: 50px;
+    padding: 10px 33px;
+    cursor: pointer;
+    margin-bottom: 7px;
+}
+
+#photo-input {
+    display: none;
+}
+
+.upload-info {
+    font-size: 10px;
+    color: #444444;
+}
+
+#photo-preview {
+    display: none;
+    max-width: 100%;
+    max-height: 169px;
+}
+
+/* Formulaire */
+#add-photo-form label {
+    display: block;
+    margin: 21px 0 10px 0;
+    font-weight: 500;
+}
+
+#add-photo-form input,
+#add-photo-form select {
+    width: 100%;
+    height: 51px;
+    border: none;
+    box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+    padding: 0 15px;
+    margin-bottom: 10px;
+}
+
+.submit-button {
+    width: 237px;
+    height: 36px;
+    background: #A7A7A7;
+    color: white;
+    border: none;
+    border-radius: 60px;
+    font-family: 'Syne';
+    font-size: 14px;
+    font-weight: 700;
+    cursor: not-allowed;
+    display: block;
+    margin: 47px auto 0;
+}
+
+.submit-button:not(:disabled) {
+    background: #1D6154;
+    cursor: pointer;
+}

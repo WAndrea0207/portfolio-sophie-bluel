@@ -3,6 +3,9 @@ const CATEGORIES_URL = 'http://localhost:5678/api/categories';
 
 let allProjects = []; // Stocker tous les projets pour le filtrage
 
+// Rendre allProjects accessible globalement
+window.allProjects = allProjects;
+
 async function loadProjects() {
     try {
         const [projects, categories] = await Promise.all([
@@ -11,6 +14,7 @@ async function loadProjects() {
         ]);
         
         allProjects = projects; // Sauvegarder pour le filtrage
+        window.allProjects = projects; // Mettre à jour la variable globale
         console.log('✅ Projets et catégories récupérés');
         
         clearGallery();

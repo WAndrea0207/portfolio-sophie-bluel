@@ -9,6 +9,7 @@
 	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap" rel="stylesheet">
 	<meta name="description" content="">
 	<link rel="stylesheet" href="./assets/style.css">
+	 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 <header>
@@ -35,7 +36,12 @@
 		</article>
 	</section>
 	<section id="portfolio">
-		<h2>Mes Projets</h2>
+    <div class="portfolio-header">
+        <h2>Mes Projets</h2>
+        <button id="edit-btn" class="edit-button">
+            <i class="fa-regular fa-pen-to-square"></i> modifier
+        </button>
+    </div>
 		<div class="gallery">
 			<!-- CONTENU DYNAMIQUE - NE RIEN METTRE ICI -->
 		</div>
@@ -62,6 +68,53 @@
 		</ul>
 	</nav>
 </footer>
+<div id="modal" class="modal">
+    <div class="modal-overlay"></div>
+    <div class="modal-content">
+        <button class="close-modal">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        
+        <!-- Vue 1: Galerie photo -->
+        <div id="gallery-view">
+            <h3>Galerie photo</h3>
+            <div class="modal-gallery">
+                <!-- Les images seront ajoutées ici par JavaScript -->
+            </div>
+            <hr>
+            <button id="btn-add-photo">Ajouter une photo</button>
+        </div>
+        
+        <!-- Vue 2: Ajout photo -->
+        <div id="add-photo-view">
+            <button class="back-button">
+                <i class="fa-solid fa-arrow-left"></i>
+            </button>
+            <h3>Ajout photo</h3>
+            <form id="add-photo-form">
+                <div class="upload-zone">
+                    <i class="fa-regular fa-image upload-icon"></i>
+                    <label for="photo-input" class="upload-label">+ Ajouter photo</label>
+                    <input type="file" id="photo-input" accept="image/png, image/jpeg">
+                    <p class="upload-info">jpg, png : 4mo max</p>
+                    <img id="photo-preview" alt="Prévisualisation">
+                </div>
+                
+                <label for="title-input">Titre</label>
+                <input type="text" id="title-input" name="title" required>
+                
+                <label for="category-input">Catégorie</label>
+                <select id="category-input" name="category" required>
+                    <option value=""></option>
+                </select>
+                
+                <hr>
+                <button type="submit" class="submit-button" disabled>Valider</button>
+            </form>
+        </div>
+    </div>
+</div>
 <script src="scripts.js"></script>
+<script src="modal.js"></script>
 </body>
 </html>
