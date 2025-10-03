@@ -51,7 +51,7 @@ if (photoInput) {
             reader.onload = (e) => {
                 photoPreview.src = e.target.result;
                 photoPreview.style.display = 'block';
-                uploadZone.style.background = 'transparent';
+
                 
                 // Cacher les éléments d'upload
                 uploadZone.querySelector('.upload-icon').style.display = 'none';

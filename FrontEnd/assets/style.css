@@ -550,9 +550,14 @@ footer nav ul {
 .upload-zone {
     background: #E8F1F6;
     border-radius: 3px;
-    padding: 30px;
     text-align: center;
     margin-bottom: 21px;
+    position: relative; /* Important pour le positionnement */
+    min-height: 169px; /* Hauteur minimum pour garder la zone */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .upload-icon {
@@ -583,7 +588,17 @@ footer nav ul {
     display: none;
     max-width: 100%;
     max-height: 169px;
+    margin: 0 auto; 
+    object-fit: contain; /* Garde les proportions sans déformation */
 }
+
+/* Cache seulement les éléments d'upload, pas le fond */
+.upload-zone.elements-hidden .upload-icon,
+.upload-zone.elements-hidden .upload-label,
+.upload-zone.elements-hidden .upload-info {
+    display: none;
+}
+
 
 /* Formulaire */
 #add-photo-form label {
@@ -591,6 +606,7 @@ footer nav ul {
     margin: 21px 0 10px 0;
     font-weight: 500;
 }
+
 
 #add-photo-form input,
 #add-photo-form select {
