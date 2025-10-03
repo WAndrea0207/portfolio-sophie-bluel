@@ -79,13 +79,18 @@ if (titleInput) titleInput.addEventListener('input', validateForm);
 if (categorySelect) categorySelect.addEventListener('change', validateForm);
 
 // Soumettre le formulaire
-if (addPhotoForm) {
-    addPhotoForm.addEventListener('submit', async (e) => {
+if (submitButton) {
+    submitButton.addEventListener('click', async (e) => {
         e.preventDefault();
         
         const token = localStorage.getItem('authToken');
         if (!token) {
             alert('Vous devez être connecté');
+            return;
+        }
+        
+        // Vérifier que le formulaire est valide
+        if (submitButton.disabled) {
             return;
         }
         
