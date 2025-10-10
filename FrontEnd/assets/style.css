@@ -56,7 +56,8 @@ body {
 header {
 	display: flex;
 	justify-content: space-between;
-	margin: 50px 0
+	margin: 50px 0 150px 0;
+    align-items: center;
 }
 
 
@@ -77,7 +78,7 @@ header nav ul li img {
 }
 
 section {
-	margin: 50px 0
+	margin: 50px 0 150px 0;
 }
 
 h1{
@@ -86,14 +87,15 @@ h1{
 	font-family: 'Syne';
 	font-size: 22px;
 	font-weight: 800;
-	color: #B1663C
+	color: #B1663C;
+    gap: 10px;
 }
 
 h1 > span {
 	font-family: 'Work Sans';
 	font-size:10px;
+    font-weight: 100;
 	letter-spacing: 0.1em;
-;
 }
 
 h2{
@@ -141,7 +143,7 @@ nav ul {
 }
 nav li {
 	padding: 0 10px;
-	font-size: 1.2em;
+	font-size: 14px;
 }
 
 li:hover {
@@ -150,25 +152,33 @@ li:hover {
 #introduction {
 	display: flex;
 	align-items: center;
+    gap: 85px;
+    justify-content: center;
 }
 #introduction figure {
-	flex: 1
+	flex: 1;
+    margin: 0;
+    display: flex;
+    justify-content: flex-end;
 }
 #introduction img {
 	display: block;
-	margin: auto;
-	width: 80%;
+    margin-left: auto;
+	width: 474px;
+    margin: 0;
 }
 
 #introduction article {
-	flex: 1
+    flex: 0.8; 
+    color: #3D3D3D;
 }
 #introduction h2 {
 	margin-bottom: 1em;
 }
 
 #introduction p {
-	margin-bottom: 0.5em;
+	margin-bottom: 1.5em;
+    max-width: 404px; 
 }
 
 .gallery {
@@ -247,7 +257,7 @@ input[type="submit"]{
 footer nav ul {
 	display: flex;
 	justify-content: flex-end;
-	margin: 2em
+	margin: 20px 0px;
 }
 
 .filters {
@@ -281,9 +291,12 @@ footer nav ul {
 /* Style pour la section login */
 #login-section {
     max-width: 400px;
-    margin: 100px auto;
+    margin: 0 auto; 
     padding: 40px;
     text-align: center;
+    position: relative; /* Ajoutez cette ligne */
+    min-height: calc(100vh - 200px);
+    transform: translateY(-20px);
 }
 
 /* Style pour le lien mot de passe oublié */
@@ -306,8 +319,7 @@ footer nav ul {
 #login-form {
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
 
 #login-form label {
@@ -324,22 +336,23 @@ footer nav ul {
     box-shadow: 0px 4px 14px 0px rgba(0, 0, 0, 0.09);
     font-family: 'Work Sans', sans-serif;
     font-size: 14px;
+    margin: 8px 0px 30px 0px;
 }
 
 /* Style pour le bouton se connecter */
 #login-form button {
-    padding: 15px 30px; /* Moins large */
+    padding: 10px 30px;
     border: none;
-    border-radius: 60px; /* Corner radius très arrondi */
+    border-radius: 60px;
     background: #1D6154;
     color: white;
     font-family: 'Syne', sans-serif;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 700;
     cursor: pointer;
-    width: 200px; /* Largeur fixe de 200px */
-    margin: 10px auto 0 auto; /* Centrage horizontal */
-    display: block; /* Nécessaire pour que margin auto fonctionne */
+    width: 179px;
+    margin: 0px auto 0 auto;
+    display: block;
 }
 
 #login-form button:hover {
@@ -374,7 +387,7 @@ footer nav ul {
 /* Header du portfolio avec bouton modifier */
 .portfolio-header {
     text-align: center;
-    margin-bottom: 1em;
+    margin-bottom: 60px;
     position: relative;
     display: flex;
     justify-content: center;
