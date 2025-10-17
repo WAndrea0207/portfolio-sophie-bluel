@@ -399,7 +399,7 @@ footer nav ul {
 .portfolio-header h2 {
     display: inline-block;
     margin: 0;
-    margin-left: 120px;
+    
     
 }
 
@@ -413,7 +413,8 @@ footer nav ul {
     cursor: pointer;
     display: none;
     vertical-align: middle;
-   
+    position: absolute;
+    right: 350px;
 }
 
 .edit-button.visible {
@@ -653,10 +654,11 @@ footer nav ul {
     display: none;
 }
 
-.upload-zone.has-preview {
-    background: transparent;
+.upload-zone.has-preview .upload-icon,
+.upload-zone.has-preview .upload-label,
+.upload-zone.has-preview .upload-info {
+    display: none;
 }
-
 
 /* Formulaire */
 #add-photo-form label:not(.upload-label) {
