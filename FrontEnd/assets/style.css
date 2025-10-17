@@ -411,9 +411,13 @@ footer nav ul {
     font-size: 14px;
     color: #000;
     cursor: pointer;
-    display: inline-block;
+    display: none;
     vertical-align: middle;
    
+}
+
+.edit-button.visible {
+    display: inline; /* Visible quand connecté */
 }
 
 .edit-button i {
@@ -455,15 +459,31 @@ footer nav ul {
     min-height: auto;
 
 }
+
+.modal.active {
+    display: block;
+}
+
+/* ===== VUES DE LA MODALE ===== */
+
 #gallery-view {
+    display: none;
     padding: 60px 105px 40px;
 }
 
-/* Vue ajout photo - padding différent */
+#gallery-view.active {
+    display: block;
+}
+
 #add-photo-view {
     display: none;
     padding: 60px 105px 60px;
 }
+
+#add-photo-view.active {
+    display: block; /* Ajouter cette règle qui manque */
+}
+
 
 /* Bouton fermer (croix) */
 .close-modal {
@@ -622,11 +642,19 @@ footer nav ul {
     object-fit: contain; /* Garde les proportions sans déformation */
 }
 
+#photo-preview.visible {
+    display: block;
+}
+
 /* Cache seulement les éléments d'upload, pas le fond */
 .upload-zone.elements-hidden .upload-icon,
 .upload-zone.elements-hidden .upload-label,
 .upload-zone.elements-hidden .upload-info {
     display: none;
+}
+
+.upload-zone.has-preview {
+    background: transparent;
 }
 
 

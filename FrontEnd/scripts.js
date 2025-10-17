@@ -41,7 +41,7 @@ function createFilterButtons(categories) {
     // Vérifier si les filtres existent déjà
     let filtersContainer = document.querySelector('.filters');
     if (filtersContainer) {
-        filtersContainer.remove(); // Supprimer l'ancien pour éviter les doublons
+        filtersContainer.remove(); 
     }
     
     filtersContainer = document.createElement('div');

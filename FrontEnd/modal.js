@@ -50,13 +50,8 @@ if (photoInput) {
             const reader = new FileReader();
             reader.onload = (e) => {
                 photoPreview.src = e.target.result;
-                photoPreview.style.display = 'block';
-
-                
-                // Cacher les éléments d'upload
-                uploadZone.querySelector('.upload-icon').style.display = 'none';
-                uploadZone.querySelector('.upload-label').style.display = 'none';
-                uploadZone.querySelector('.upload-info').style.display = 'none';
+                photoPreview.classList.add('visible');
+                uploadZone.classList.add('has-preview');
             };
             reader.readAsDataURL(file);
             validateForm();
@@ -131,14 +126,11 @@ if (submitButton) {
 function resetForm() {
     if (addPhotoForm) addPhotoForm.reset();
     if (photoPreview) {
-        photoPreview.style.display = 'none';
+        photoPreview.classList.remove('visible');
         photoPreview.src = '';
     }
     if (uploadZone) {
-        uploadZone.style.background = '#E8F1F6';
-        uploadZone.querySelector('.upload-icon').style.display = 'block';
-        uploadZone.querySelector('.upload-label').style.display = 'block';
-        uploadZone.querySelector('.upload-info').style.display = 'block';
+        uploadZone.classList.remove('has-preview');
     }
     if (submitButton) submitButton.disabled = true;
 }
@@ -146,29 +138,29 @@ function resetForm() {
 
 // Ouvrir la modale
 function openModal() {
-    modal.style.display = 'block';
+    modal.classList.add('active');
     showGalleryView();
     loadModalGallery();
 }
 
 // Fermer la modale
 function closeModal() {
-    modal.style.display = 'none';
+    modal.classList.remove('active');
     showGalleryView();
 }
 
 // Afficher vue galerie
 function showGalleryView() {
-    galleryView.style.display = 'block';
-    addPhotoView.style.display = 'none';
+    galleryView.classList.add('active');
+    addPhotoView.classList.remove('active');
 }
 
 // Afficher vue ajout
 function showAddPhotoView() {
-    galleryView.style.display = 'none';
-    addPhotoView.style.display = 'block';
-    loadCategories(); // Charger les catégories
-    resetForm(); // Réinitialiser le formulaire
+    galleryView.classList.remove('active');
+    addPhotoView.classList.add('active');
+    loadCategories();
+    resetForm();
 }
 
 // Charger les travaux dans la modale
@@ -253,6 +245,7 @@ async function reloadMainGallery() {
         console.error('Erreur lors du rechargement:', error);
     }
 }
+
 // Écouteurs
 if (editBtn) editBtn.addEventListener('click', openModal);
 if (closeBtn) closeBtn.addEventListener('click', closeModal);
@@ -265,7 +258,6 @@ if (backButton) backButton.addEventListener('click', showGalleryView);
 document.addEventListener('DOMContentLoaded', () => {
     const token = localStorage.getItem('authToken');
     if (token && editBtn) {
-        editBtn.style.display = 'inline';
+        editBtn.classList.add('visible');
     }
 });
-
