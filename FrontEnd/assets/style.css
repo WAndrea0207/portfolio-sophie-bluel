@@ -127,6 +127,7 @@ header nav ul li a {
 /* Couleur au survol */
 header nav ul li a:hover {
     color: #B1663C; /* Violet/marron au survol */
+    cursor: pointer; /* Curseur main au survol */
 }
 
 /* Style spécifique pour la page active */
@@ -144,10 +145,6 @@ nav ul {
 nav li {
 	padding: 0 10px;
 	font-size: 14px;
-}
-
-li:hover {
-	color: #B1663C;
 }
 #introduction {
 	display: flex;
@@ -705,5 +702,30 @@ footer nav ul {
 
 .submit-button:not(:disabled) {
     background: #1D6154;
+    cursor: pointer;
+}
+
+/* ===== LOGOUT / LOGIN ===== */
+
+/* Les deux éléments - Cachés par défaut */
+#logout-btn,
+#login-link {
+    display: none;
+    color: black; 
+}
+
+/* Afficher logout quand connecté */
+#logout-btn.active {
+    display: inline;
+}
+
+/* Afficher login par défaut */
+#login-link.active {
+    display: inline;
+}
+
+#logout-btn:hover,
+#login-link:hover {
+    color: #B1663C;
     cursor: pointer;
 }

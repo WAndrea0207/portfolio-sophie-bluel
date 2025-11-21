@@ -257,7 +257,29 @@ if (backButton) backButton.addEventListener('click', showGalleryView);
 // Afficher le bouton si connecté
 document.addEventListener('DOMContentLoaded', () => {
     const token = localStorage.getItem('authToken');
+    const logoutBtn = document.getElementById('logout-btn');
+    const loginLink = document.getElementById('login-link');
+    
     if (token && editBtn) {
         editBtn.classList.add('visible');
+        // Logout actif
+        if (logoutBtn) logoutBtn.classList.add('active');
+        // Login inactif
+        if (loginLink) loginLink.classList.remove('active');
+    } else {
+        // Login actif
+        if (loginLink) loginLink.classList.add('active');
+        // Logout inactif
+        if (logoutBtn) logoutBtn.classList.remove('active');
     }
 });
+
+// Écouteur pour logout
+const logoutBtn = document.getElementById('logout-btn');
+if (logoutBtn) {
+    logoutBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        localStorage.clear();
+        window.location.href = 'index.html';
+    });
+}
