@@ -2,17 +2,28 @@
   "version": 2,
   "builds": [
     {
-      "src": "server.js",
+      "src": "Backend/app.js",
       "use": "@vercel/node",
       "config": {
-        "includeFiles": ["**"]
+        "includeFiles": [
+          "Backend/node_modules/pg/**",
+          "Backend/node_modules/pg-protocol/**",
+          "Backend/node_modules/pg-types/**",
+          "Backend/node_modules/postgres-array/**",
+          "Backend/node_modules/postgres-bytea/**",
+          "Backend/node_modules/postgres-date/**",
+          "Backend/node_modules/postgres-interval/**",
+          "Backend/swagger.yaml",
+          "Backend/images/**",
+          "FrontEnd/**"
+        ]
       }
     }
   ],
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "server.js"
+      "dest": "Backend/app.js"
     }
   ]
 }
