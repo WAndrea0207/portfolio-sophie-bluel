@@ -1,4 +1,6 @@
 module.exports = {
-	dialect: "sqlite",
-	storage: './database.sqlite'
+	dialect: "postgres",
+	dialectOptions: {
+		ssl: { require: true, rejectUnauthorized: false }
+	}
 };
